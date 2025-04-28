@@ -1,0 +1,47 @@
+---
+import { useState } from 'astro/jsx-runtime';
+---
+<!-- 助眠音乐与歌词展示组件 -->
+<div x-data="{selected: null, showLyrics: false}" class="w-full max-w-md mx-auto">
+  <h3 class="text-lg font-semibold mb-2 mt-6">助眠音乐与歌曲</h3>
+  <ul class="flex flex-col gap-2 mb-4">
+    <li>
+      <button class="btn btn-outline w-full justify-between" x-on:click="selected = 0; showLyrics = true;">
+        宁静夜晚
+        <span class="text-xs text-gray-400">点击查看</span>
+      </button>
+    </li>
+    <li>
+      <button class="btn btn-outline w-full justify-between" x-on:click="selected = 1; showLyrics = true;">
+        晨曦微光
+        <span class="text-xs text-gray-400">点击查看</span>
+      </button>
+    </li>
+  </ul>
+  <template x-if="showLyrics && selected === 0">
+    <div class="bg-white rounded-lg shadow p-4 mb-4">
+      <audio controls class="w-full mb-2">
+        <source src="/music/night.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <applemusic-like-lyrics
+        :lyrics="`[00:00.00] 宁静夜晚\n[00:10.00] 星光洒满天\n[00:20.00] 温柔的风轻轻吹过`"
+        :current-time="0"
+        :is-play="false"
+      />
+    </div>
+  </template>
+  <template x-if="showLyrics && selected === 1">
+    <div class="bg-white rounded-lg shadow p-4 mb-4">
+      <audio controls class="w-full mb-2">
+        <source src="/music/morning.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <applemusic-like-lyrics
+        :lyrics="`[00:00.00] 晨曦微光\n[00:10.00] 新的一天开始\n[00:20.00] 阳光洒进梦乡`"
+        :current-time="0"
+        :is-play="false"
+      />
+    </div>
+  </template>
+</div>

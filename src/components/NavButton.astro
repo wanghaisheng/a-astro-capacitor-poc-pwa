@@ -2,14 +2,17 @@
 interface Props {
   name: string;
   icon: string;
+  class?: string;
 }
 
 import { Icon } from "astro-icon/components";
 
-const { name, icon } = Astro.props;
+const { name, icon, class: extraClass = "" } = Astro.props;
 ---
 
-<button x-on:click={`tab = '${name}'`} :class={`tab === '${name}' && 'active'`}>
-  <Icon name={icon} />
-  <span class="btm-nav-label capitalize">{name}</span>
+<button x-on:click={`tab = '${name}'`} :class={`tab === '${name}' && 'active'`} class={`btm-nav-btn ${extraClass} flex flex-col items-center justify-center w-full h-full`} style="touch-action: manipulation; min-width: 0;">
+  <span class="flex flex-col items-center justify-center w-full h-full pointer-events-none">
+    <Icon name={icon} class="mx-auto" />
+    <span class="btm-nav-label capitalize">{name}</span>
+  </span>
 </button>

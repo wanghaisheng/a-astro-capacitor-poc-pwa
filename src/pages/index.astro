@@ -1,45 +1,44 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Toast from "../components/Toast.astro";
-import Network from "../components/Network.astro";
 import Camera from "../components/camera/Camera.astro";
 import SaveFile from "../components/files/SaveFile.astro";
 import Map from "../components/map/Map.astro";
 import Chart from "../components/chart/Chart.astro";
-import Storage from "../components/storage/Storage.astro";
 import NavButton from "../components/NavButton.astro";
+import Home from "../components/home/Home.astro";
+import Setting from "../components/setting/Setting.astro";
+import Task from "../components/task/Task.astro";
+import Statics from "../components/statics/Statics.astro";
+import Ranking from "../components/ranking/Ranking.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <header class="pt-[env(safe-area-inset-top)]"></header>
-  <main x-data="{tab: 'map'}" class="mb-6 container mx-auto mt-6 px-3 pb-12">
+  <main x-data="{tab: 'home'}" class="mb-6 container mx-auto mt-6 px-3 pb-12">
     <div>
-      <div x-show="tab === 'map'">
-        <Map />
+      <div x-show="tab === 'home'">
+        <Home />
       </div>
-      <div x-show="tab === 'chart'">
-        <Chart />
+      <div x-show="tab === 'task'">
+        <Task />
       </div>
-      <div x-show="tab === 'storage'">
-        <Storage />
-        <hr />
-        <SaveFile />
+      <div x-show="tab === 'statics'">
+        <Statics />
       </div>
-      <div x-show="tab === 'camera'">
-        <Camera />
+      <div x-show="tab === 'ranking'">
+        <Ranking />
       </div>
-      <div x-show="tab === 'network'">
-        <Network />
-        <hr />
-        <Toast />
+      <div x-show="tab === 'setting'">
+        <Setting />
       </div>
     </div>
-    <div class="btm-nav z-[20000000] bg-base-200">
-      <NavButton name="map" icon="ic:round-map" />
-      <NavButton name="chart" icon="ic:round-stacked-line-chart" />
-      <NavButton name="storage" icon="ic:round-storage" />
-      <NavButton name="camera" icon="ic:round-camera-alt" />
-      <NavButton name="network" icon="ic:round-wifi" />
+    <div class="btm-nav fixed bottom-0 left-0 right-0 z-[20000000] bg-base-200 pb-[env(safe-area-inset-bottom)] w-full flex justify-between">
+      <NavButton name="home" icon="ic:round-home" class="flex-1 mx-1" />
+      <NavButton name="task" icon="ic:round-check-circle" class="flex-1 mx-1" />
+      <NavButton name="statics" icon="ic:round-bar-chart" class="flex-1 mx-1" />
+      <NavButton name="ranking" icon="ic:round-emoji-events" class="flex-1 mx-1" />
+      <NavButton name="setting" icon="ic:round-settings" class="flex-1 mx-1" />
     </div>
   </main>
 </Layout>

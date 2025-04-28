@@ -1,0 +1,26 @@
+---
+import MusicLyricsSimple from "./MusicLyricsSimple.jsx";
+// No props needed for now
+---
+<div class="w-full min-h-[600px] flex flex-col items-center justify-start bg-base-100 pt-8 pb-24 px-4">
+  <h1 class="text-2xl font-bold text-center mb-2">Sleep Tracker</h1>
+  <p class="text-center text-gray-500 mb-4">Track your sleep and improve your health</p>
+  <div class="stats shadow mb-4 w-full max-w-md mx-auto">
+    <div class="stat">
+      <div class="stat-title">Last Night's Sleep</div>
+      <div class="stat-value text-primary">7h 45m</div>
+      <div class="stat-desc">Better than 65% of users</div>
+    </div>
+    <div class="stat">
+      <div class="stat-title">Sleep Goal</div>
+      <div class="stat-value text-secondary">8h</div>
+      <div class="stat-desc">Keep it up!</div>
+    </div>
+  </div>
+  <button class="btn btn-primary w-full mb-2">Start Sleep Tracking</button>
+  <button class="btn btn-outline w-full mb-2">View Sleep History</button>
+  <div class="mt-6 text-center text-xs text-gray-400">Powered by DaisyUI & Tailwind CSS</div>
+  <div class="mt-8 w-full">
+    <MusicLyricsSimple client:load />
+  </div>
+</div>

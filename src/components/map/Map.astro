@@ -10,34 +10,33 @@ const markersLocation: [string, number, number][] = [
 ];
 ---
 
-<h2 class="text-xl">Leaflet Map</h2>
-<h3 class="text-lg font-semibold">Your current location</h3>
-
-<div id="current-map">
-  <p>
-    <div>
-      Longitude:
+<div class="w-full min-h-[600px] flex flex-col items-center justify-start bg-base-100 pt-8 pb-24 px-4">
+  <h2 class="text-2xl font-bold mb-2 text-center">Leaflet Map</h2>
+  <h3 class="text-lg font-semibold mb-2 text-center">Your current location</h3>
+  <div id="current-map" class="w-full mb-4">
+    <div class="flex justify-between text-sm mb-1">
+      <span>Longitude:</span>
       <span id="latitude"></span>
     </div>
-    <div>
-      Latitude:
+    <div class="flex justify-between text-sm mb-2">
+      <span>Latitude:</span>
       <span id="longitude"></span>
     </div>
-  </p>
-  <div id="user-map" class="h-[300px]"></div>
-</div>
-<div>
-  <h3 class="text-lg font-semibold">Malls in Bangkok</h3>
-  <Leaflet
-    container="mall-map-container"
-    latitude={markersLocation[0][1]}
-    longitude={markersLocation[0][2]}
-    zoom={13}
-    tileLayer="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    attribution="© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-    containerstyle="height: 300px;"
-    locations={markersLocation}
-  />
+    <div id="user-map" class="h-[200px] w-full rounded-lg shadow"></div>
+  </div>
+  <div class="w-full">
+    <h3 class="text-lg font-semibold mb-2 text-center">Malls in Bangkok</h3>
+    <Leaflet
+      container="mall-map-container"
+      latitude={markersLocation[0][1]}
+      longitude={markersLocation[0][2]}
+      zoom={13}
+      tileLayer="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+      containerstyle="height: 200px; width: 100%; border-radius: 0.5rem; box-shadow: 0 1px 8px rgba(0,0,0,0.07);"
+      locations={markersLocation}
+    />
+  </div>
 </div>
 
 <script src="./map.ts"></script>

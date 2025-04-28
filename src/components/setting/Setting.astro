@@ -1,0 +1,56 @@
+---
+import { useState } from 'astro/jsx-runtime';
+import NetworkSetting from "./NetworkSetting.astro";
+import StorageSetting from "./StorageSetting.astro";
+import MapSetting from "./MapSetting.astro";
+import ChartSetting from "./ChartSetting.astro";
+import CameraSetting from "./CameraSetting.astro";
+---
+
+<!-- 设置页，多个按钮，点击切换到具体设置页 -->
+<div class="w-full min-h-[600px] flex flex-col items-center justify-center bg-base-100">
+  <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg mt-8">
+    <h2 class="text-2xl font-bold mb-8 text-center">Settings</h2>
+    <div x-data="{page: 'main'}">
+      <template x-if="page === 'main'">
+        <div class="flex flex-col gap-4">
+          <button class="btn btn-outline w-full" x-on:click="page = 'network'">Network Settings</button>
+          <button class="btn btn-outline w-full" x-on:click="page = 'storage'">Storage Settings</button>
+          <button class="btn btn-outline w-full" x-on:click="page = 'map'">Map</button>
+          <button class="btn btn-outline w-full" x-on:click="page = 'chart'">Charts</button>
+          <button class="btn btn-outline w-full" x-on:click="page = 'camera'">Camera</button>
+        </div>
+      </template>
+      <template x-if="page === 'network'">
+        <div>
+          <button class="btn btn-ghost mb-4" x-on:click="page = 'main'">← Back</button>
+          <NetworkSetting />
+        </div>
+      </template>
+      <template x-if="page === 'storage'">
+        <div>
+          <button class="btn btn-ghost mb-4" x-on:click="page = 'main'">← Back</button>
+          <StorageSetting />
+        </div>
+      </template>
+      <template x-if="page === 'map'">
+        <div>
+          <button class="btn btn-ghost mb-4" x-on:click="page = 'main'">← Back</button>
+          <MapSetting />
+        </div>
+      </template>
+      <template x-if="page === 'chart'">
+        <div>
+          <button class="btn btn-ghost mb-4" x-on:click="page = 'main'">← Back</button>
+          <ChartSetting />
+        </div>
+      </template>
+      <template x-if="page === 'camera'">
+        <div>
+          <button class="btn btn-ghost mb-4" x-on:click="page = 'main'">← Back</button>
+          <CameraSetting />
+        </div>
+      </template>
+    </div>
+  </div>
+</div>

@@ -5,7 +5,9 @@
  */
 ---
 
-<canvas id="bar-chart"></canvas>
-<canvas id="line-chart"></canvas>
-
+<div class="w-full min-h-[600px] flex flex-col items-center justify-start bg-base-100 pt-8 pb-24 px-4">
+  <h2 class="text-2xl font-bold mb-4 text-center">Charts</h2>
+  <canvas id="bar-chart" class="w-full max-w-md rounded-lg shadow mb-4"></canvas>
+  <canvas id="line-chart" class="w-full max-w-md rounded-lg shadow"></canvas>
+</div>
 <script src="./chart.ts"></script>

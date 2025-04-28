@@ -29,6 +29,7 @@ const { title } = Astro.props;
       )
     }
     {pwaAssetsHead.links.map((link) => <link {...link} />)}
+    <link href="/src/styles/global.css" rel="stylesheet" />
     <script
       is:inline
       type="module"
