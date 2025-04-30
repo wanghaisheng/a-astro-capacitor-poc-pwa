@@ -51,6 +51,7 @@
     "@faker-js/faker": "^8.4.1",
     "@iconify-json/ic": "^1.1.17",
     "astro-icon": "^1.1.0",
-    "daisyui": "^5.0.28"
+    "daisyui": "^5.0.28",
+    "workbox-window": "^7.3.0"
   }
 }

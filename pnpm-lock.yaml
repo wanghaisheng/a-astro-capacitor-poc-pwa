@@ -120,6 +120,9 @@ importers:
       daisyui:
         specifier: ^5.0.28
         version: 5.0.28
+      workbox-window:
+        specifier: ^7.3.0
+        version: 7.3.0
 
 packages:
 
