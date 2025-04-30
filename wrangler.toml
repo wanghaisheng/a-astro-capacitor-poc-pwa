@@ -1,0 +1,8 @@
+# Cloudflare Wrangler 配置文件
+name = "a-astro-capacitor-poc-pwa"
+type = "javascript"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+# 请根据你的 Cloudflare 账号和部署需求补充 account_id、zone_id、route 等字段
