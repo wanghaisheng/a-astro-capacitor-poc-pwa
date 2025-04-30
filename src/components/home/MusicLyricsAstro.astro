@@ -1,36 +1,11 @@
 ---
-import React from 'react';
 import MusicLyricsSimple from './MusicLyricsSimple.jsx';
-import { useState } from 'react';
-
-const tracks = [
-  {
-    title: '宁静夜晚',
-    audio: '/music/night.mp3',
-    lrc: `[00:00.00] 宁静夜晚\n[00:10.00] 星光洒满天\n[00:20.00] 温柔的风轻轻吹过`,
-  },
-  {
-    title: '晨曦微光',
-    audio: '/music/morning.mp3',
-    lrc: `[00:00.00] 晨曦微光\n[00:10.00] 新的一天开始\n[00:20.00] 阳光洒进梦乡`,
-  },
-];
-
-const [selected, setSelected] = useState(0);
+import MusicLyricsReact from './MusicLyricsReact.jsx';
 ---
 <div class="w-full max-w-md mx-auto mt-8">
   <h3 class="text-lg font-semibold mb-2">助眠音乐与歌曲</h3>
-  <ul class="flex flex-col gap-2 mb-4">
-    {tracks.map((track, idx) => (
-      <li key={track.title}>
-        <button class={`btn btn-outline w-full justify-between ${selected === idx ? 'btn-active' : ''}`} onClick={() => setSelected(idx)}>
-          {track.title}
-          <span class="text-xs text-gray-400">点击查看</span>
-        </button>
-      </li>
-    ))}
-  </ul>
   <div class="bg-white rounded-lg shadow p-4 mb-4">
-    <MusicLyricsSimple client:react track={tracks[selected]} />
+    <!-- 助眠音乐与歌词展示组件（React 版本，client:load 集成） -->
+    <MusicLyricsReact client:load />
   </div>
 </div>

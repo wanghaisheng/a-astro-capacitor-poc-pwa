@@ -76,3 +76,82 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## Integrating React with Astro
+
+This project demonstrates how to use React components within an Astro site, including interactive hydration and usage patterns.
+
+### 1. Install React Integration
+
+Run the following command to add React support to your Astro project:
+
+```sh
+npx astro add react
+```
+
+If you encounter missing peer dependencies, install them with:
+
+```sh
+npm install react react-dom @types/react @types/react-dom
+```
+
+### 2. Configure Astro for React
+
+Astro automatically updates your `astro.config.*` file when you run the add command. If you need to do it manually, add the integration:
+
+```js
+import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
+
+export default defineConfig({
+  integrations: [react()],
+});
+```
+
+### 3. Import and Use React Components in .astro Files
+
+You can import React components (e.g., `.jsx` or `.tsx` files) into your `.astro` components:
+
+```astro
+---
+import MusicLyricsReact from './src/components/home/MusicLyricsReact.jsx';
+---
+<MusicLyricsReact />
+```
+
+By default, React components render as static HTML (no interactivity).
+
+### 4. Hydrate Interactive Components
+
+To make a React component interactive in the browser, add a client directive such as `client:load`:
+
+```astro
+<MusicLyricsReact client:load />
+```
+
+Available hydration directives:
+- `client:load`: Hydrates as soon as the page loads
+- `client:idle`: Hydrates when the browser is idle
+- `client:visible`: Hydrates when the component is visible
+- `client:media={QUERY}`: Hydrates based on a media query
+- `client:only="react"`: Only renders on the client
+
+See [Astro Directives Reference](https://docs.astro.build/en/reference/directives-reference/#client-directives) for details.
+
+### 5. Example Usage in This Project
+
+- See `src/components/home/MusicLyricsAstro.astro` for an example of importing and hydrating a React component:
+
+```astro
+---
+import MusicLyricsReact from './MusicLyricsReact.jsx';
+---
+<MusicLyricsReact client:load />
+```
+
+- The React component itself is defined in `src/components/home/MusicLyricsReact.jsx`.
+
+### 6. Further Reading
+
+- [Astro React Integration Guide](https://docs.astro.build/en/guides/integrations-guide/react/)
+- [Using Framework Components in Astro](https://docs.astro.build/en/guides/framework-components/#using-framework-components)
