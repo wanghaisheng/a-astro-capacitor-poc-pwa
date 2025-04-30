@@ -1,4 +1,4 @@
-# Astro + Capacitor (Proof of Concept)
+# AstroV5 + Capacitor (Proof of Concept)
 
 I have conducted a proof of concept testing various features of Capacitor utilizing the Astro framework.
 
