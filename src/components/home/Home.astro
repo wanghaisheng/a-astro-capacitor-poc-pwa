@@ -1,6 +1,33 @@
 ---
 import MusicLyricsSimple from "./MusicLyricsSimple.jsx";
-// No props needed for now
+import trpc from '../../../lib/trpc';
+
+interface Props {
+  client: 'load';
+}
+
+interface Stats {
+  lastNight: {
+    hours: number;
+    minutes: number;
+    comparison: string;
+  };
+  goal: {
+    hours: number;
+    minutes: number;
+    status: string;
+  };
+}
+
+const getFormattedTime = (hours: number, minutes: number) => {
+  return `${hours}h ${minutes}m`;
+};
+
+---
+const { client } = Astro.props;
+
+const stats = await trpc.getSleepStats.query();
+
 ---
 <div class="w-full min-h-[600px] flex flex-col items-center justify-start bg-base-100 pt-8 pb-24 px-4">
   <h1 class="text-2xl font-bold text-center mb-2">Sleep Tracker</h1>
@@ -8,13 +35,13 @@ import MusicLyricsSimple from "./MusicLyricsSimple.jsx";
   <div class="stats shadow mb-4 w-full max-w-md mx-auto">
     <div class="stat">
       <div class="stat-title">Last Night's Sleep</div>
-      <div class="stat-value text-primary">7h 45m</div>
-      <div class="stat-desc">Better than 65% of users</div>
+      <div class="stat-value text-primary">{getFormattedTime(stats.lastNight.hours, stats.lastNight.minutes)}</div>
+      <div class="stat-desc">{stats.lastNight.comparison}</div>
     </div>
     <div class="stat">
       <div class="stat-title">Sleep Goal</div>
-      <div class="stat-value text-secondary">8h</div>
-      <div class="stat-desc">Keep it up!</div>
+      <div class="stat-value text-secondary">{getFormattedTime(stats.goal.hours, stats.goal.minutes)}</div>
+      <div class="stat-desc">{stats.goal.status}</div>
     </div>
   </div>
   <button class="btn btn-primary w-full mb-2">Start Sleep Tracking</button>
